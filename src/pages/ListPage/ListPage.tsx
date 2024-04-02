@@ -15,6 +15,7 @@ import { useModal } from "../../hooks/useModal";
 import { convertEstimate } from "../../utils/estimate.utils";
 import { useCreateTask } from "./hooks/useCreateTask";
 import { useGetList } from "./hooks/useGetList";
+import { useGetTasks } from "./hooks/useGetTasks";
 
 export const ListPage = () => {
   const { id } = useParams();
@@ -35,6 +36,7 @@ export const ListPage = () => {
 
   const timePopup = useModal();
   const { createTask, isTaskCreating } = useCreateTask();
+  const { tasks, total, isTasksLoading } = useGetTasks(id);
 
   const estimate = watch("estimate");
 
@@ -61,7 +63,15 @@ export const ListPage = () => {
 
   return (
     <View gap={32} direction="column">
-      <PageHeader title={list.title} />
+      <PageHeader title={list.title} text={total.toString()} />
+
+      <View direction="column" gap={8}>
+        {tasks.map((task) => (
+          <div key={task.id}>{task.title}</div>
+        ))}
+        {isTasksLoading && <OvalLoader />}
+      </View>
+
       <Field
         placeholder="Enter Task"
         right={
