@@ -1,14 +1,38 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-import { ActionButton, Card, Field, PageHeader } from "../../components";
-import { View } from "../../components/View";
+import { CreateList } from "../../api/models/list.model";
+import { OvalLoader } from "../../assets/icons";
+import { ActionButton, Card, Field, PageHeader, View } from "../../components";
 import { ListCard } from "./components";
+import { useCreateList } from "./hooks/useCreateList";
+import { useLists } from "./hooks/useLists";
 
 export const HomePage = () => {
   const {
     register,
     formState: { isValid },
-  } = useForm<{ listName: string }>();
+    handleSubmit,
+    reset,
+  } = useForm<CreateList>({
+    defaultValues: { title: "" },
+  });
+
+  const navigate = useNavigate();
+  const { lists, isLoading, total } = useLists();
+  const { createList, createdList, isCreating } = useCreateList();
+
+  const handleCreateList = (list: CreateList) => {
+    createList(list);
+  };
+
+  useEffect(() => {
+    if (createdList) {
+      reset();
+      navigate(`/list/${createdList.id}`);
+    }
+  }, [createdList]);
 
   return (
     <View direction="column" gap={32}>
@@ -18,17 +42,31 @@ export const HomePage = () => {
       >
         <Field
           placeholder="List name"
-          right={<ActionButton label="Let's go!" disabled={!isValid} />}
-          {...register("listName", {
+          right={
+            <ActionButton
+              label="Let's go!"
+              disabled={!isValid}
+              isLoading={isCreating}
+              onClick={handleSubmit(handleCreateList)}
+            />
+          }
+          {...register("title", {
             required: true,
             minLength: 3,
             maxLength: 16,
           })}
         />
       </Card>
-      <PageHeader title="Explore" text="0" />
-      <View gap={16} wrap>
-        <ListCard title="My list" tasks={125} path="/list/1" />
+      <PageHeader title="Explore" text={total.toString()} />
+      <View gap={16} wrap centered={!lists.length}>
+        {lists.map((list) => (
+          <ListCard
+            key={list.id}
+            title={list.title}
+            path={`/list/${list.id}`}
+          />
+        ))}
+        {isLoading && <OvalLoader />}
       </View>
     </View>
   );

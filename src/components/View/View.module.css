@@ -1,3 +1,9 @@
 .View {
   display: flex;
 }
+
+.View.Centered {
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}

@@ -6,7 +6,7 @@ export const Root = () => {
   return (
     <>
       <Header />
-      <div style={{ flex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
         <Outlet />
       </div>
       <Footer />

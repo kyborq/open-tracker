@@ -9,6 +9,9 @@
   border: none;
   cursor: pointer;
   transition: 250ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ActionButton:active {
