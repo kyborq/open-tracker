@@ -1,8 +1,8 @@
 .ActionButton {
   font-weight: bold;
   font-size: 13px;
-  color: #ffffff;
-  background-color: #4361ee;
+  color: #4361ee;
+  background-color: #ffffff;
   height: 40px;
   padding: 0 24px;
   border-radius: 20px;
@@ -12,10 +12,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
+  fill: #4361ee;
 }
 
 .ActionButton:active {
-  background-color: #3754d3;
+  background-color: #ffffff;
+  transform: scale(0.985);
   transition: 250ms;
 }
 
@@ -23,4 +26,20 @@
   background-color: #e9ecef;
   color: #adb5bd;
   cursor: default;
+  transform: none;
+  fill: #adb5bd;
+}
+
+.ActionButton.Primary {
+  color: #ffffff;
+  fill: #ffffff;
+  background-color: #4361ee;
+}
+
+.ActionButton.Primary.Disabled {
+  background-color: #e9ecef;
+  color: #adb5bd;
+  fill: #adb5bd;
+  cursor: default;
+  transform: none;
 }

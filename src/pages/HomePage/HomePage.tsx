@@ -49,12 +49,14 @@ export const HomePage = () => {
       >
         <Field
           placeholder="List name"
+          primary
           right={
             <ActionButton
               label="Let's go!"
               disabled={!isValid}
               isLoading={isCreating}
               onClick={handleSubmit(handleCreateList)}
+              primary
             />
           }
           {...register("title", {
