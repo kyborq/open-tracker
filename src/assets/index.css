@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: "Montserrat Variable", system-ui, -apple-system;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+svg {
+  flex: none;
+  fill: inherit;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+}
