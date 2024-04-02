@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import { CreateList } from "../../api/models/list.model";
 import { OvalLoader } from "../../assets/icons";
-import { ActionButton, Card, Field, PageHeader, View } from "../../components";
+import {
+  ActionButton,
+  Card,
+  EmptyView,
+  Field,
+  PageHeader,
+  View,
+} from "../../components";
 import { ListCard } from "./components";
 import { useCreateList } from "./hooks/useCreateList";
 import { useLists } from "./hooks/useLists";
@@ -35,7 +42,7 @@ export const HomePage = () => {
   }, [createdList]);
 
   return (
-    <View direction="column" gap={32}>
+    <View direction="column" gap={32} flex={1}>
       <Card
         title="Create, assign, and track"
         text="We will create public list, that can view by anyone, that’s cost of free usage"
@@ -67,6 +74,9 @@ export const HomePage = () => {
           />
         ))}
         {isLoading && <OvalLoader />}
+        {!isLoading && !lists.length && (
+          <EmptyView text="Will you be my first?" />
+        )}
       </View>
     </View>
   );

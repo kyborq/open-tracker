@@ -5,3 +5,4 @@ export * from "./Card";
 export * from "./Field";
 export * from "./ActionButton";
 export * from "./View";
+export * from "./EmptyView";

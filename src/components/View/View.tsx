@@ -7,15 +7,25 @@ type Props = {
   direction?: "column" | "row";
   children?: React.ReactNode;
   centered?: boolean;
+  flex?: number;
 };
 
-export const View = ({ children, direction, gap, wrap, centered }: Props) => {
+export const View = ({
+  children,
+  direction,
+  gap,
+  wrap,
+  centered,
+  flex,
+}: Props) => {
   return (
     <div
       className={classes(styles.View, centered && styles.Centered)}
       style={{
         flexDirection: direction,
         flexWrap: wrap ? "wrap" : undefined,
+        alignContent: wrap && !centered ? "flex-start" : undefined,
+        flex,
         gap,
       }}
     >

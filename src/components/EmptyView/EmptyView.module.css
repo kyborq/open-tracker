@@ -1,0 +1,17 @@
+.EmptyView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.Image {
+  filter: drop-shadow(0 2px 24px rgba(0, 4, 41, 0.15));
+}
+
+.Text {
+  font-size: 13px;
+  color: #ced4da;
+}
