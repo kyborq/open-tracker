@@ -1,0 +1,26 @@
+.Card {
+  padding: 32px;
+  background-color: #e9ecef;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  gap: 32px;
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Description {
+  font-size: 13px;
+  color: #adb5bd;
+}

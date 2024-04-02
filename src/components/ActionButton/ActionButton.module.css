@@ -1,0 +1,23 @@
+.ActionButton {
+  font-weight: bold;
+  font-size: 13px;
+  color: #ffffff;
+  background-color: #4361ee;
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 250ms;
+}
+
+.ActionButton:active {
+  background-color: #3754d3;
+  transition: 250ms;
+}
+
+.ActionButton.Disabled {
+  background-color: #e9ecef;
+  color: #adb5bd;
+  cursor: default;
+}
