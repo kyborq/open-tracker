@@ -1,4 +1,4 @@
-import { addMinutes, format } from "date-fns";
+import { addMinutes, format, isValid } from "date-fns";
 import { ru } from "date-fns/locale";
 
 export const convertEstimate = (hours: number): string => {
@@ -7,6 +7,10 @@ export const convertEstimate = (hours: number): string => {
 
   const date = new Date(0);
   date.setUTCHours(wholeHours, minutes);
+
+  if (!isValid(date)) {
+    return "00:00";
+  }
 
   const formattedDate = format(
     addMinutes(date, date.getTimezoneOffset()),

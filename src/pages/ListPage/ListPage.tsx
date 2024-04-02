@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
+import { CreateTask } from "../../api/models/task.model";
 import { OvalLoader, SendIcon, TimeIcon } from "../../assets/icons";
 import {
   ActionButton,
@@ -12,6 +13,7 @@ import {
 } from "../../components";
 import { useModal } from "../../hooks/useModal";
 import { convertEstimate } from "../../utils/estimate.utils";
+import { useCreateTask } from "./hooks/useCreateTask";
 import { useGetList } from "./hooks/useGetList";
 
 export const ListPage = () => {
@@ -21,15 +23,25 @@ export const ListPage = () => {
     register,
     watch,
     formState: { isValid },
-  } = useForm<{ estimate: number; title: string }>({
+    handleSubmit,
+    reset,
+  } = useForm<CreateTask>({
     values: {
       estimate: 0,
       title: "",
+      list: id || "",
     },
   });
 
   const timePopup = useModal();
+  const { createTask, isTaskCreating } = useCreateTask();
+
   const estimate = watch("estimate");
+
+  const handleCreateTask = (data: CreateTask) => {
+    createTask(data);
+    reset();
+  };
 
   if (isLoading) {
     return (
@@ -59,7 +71,13 @@ export const ListPage = () => {
               icon={<TimeIcon />}
               onClick={timePopup.open}
             />
-            <ActionButton icon={<SendIcon />} primary disabled={!isValid} />
+            <ActionButton
+              icon={<SendIcon />}
+              primary
+              disabled={!isValid}
+              isLoading={isTaskCreating}
+              onClick={handleSubmit(handleCreateTask)}
+            />
             <Popup state={timePopup} width={220} title="Estimate">
               <Field
                 type="number"
