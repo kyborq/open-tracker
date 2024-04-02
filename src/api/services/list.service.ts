@@ -11,3 +11,8 @@ export const createList = async (list: CreateList) => {
   const { data } = await api.post<Created>("/lists/records", list);
   return data;
 };
+
+export const getList = async (listId: string) => {
+  const { data } = await api.get<List>(`/lists/records/${listId}`);
+  return data;
+};
