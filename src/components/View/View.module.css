@@ -1,5 +1,6 @@
 .View {
   display: flex;
+  position: relative;
 }
 
 .View.Centered {

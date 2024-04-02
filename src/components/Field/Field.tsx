@@ -7,7 +7,11 @@ type Props = {
   left?: React.ReactNode;
   right?: React.ReactNode;
   placeholder?: string;
+  padding?: number;
   name?: string;
+  min?: string | number;
+  max?: string | number;
+  type?: string;
   value?: string;
   primary?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -15,15 +19,32 @@ type Props = {
 
 export const Field = forwardRef(
   (
-    { left, placeholder, right, name, value, primary, onChange }: Props,
+    {
+      left,
+      placeholder,
+      right,
+      name,
+      padding,
+      value,
+      max,
+      min,
+      type,
+      primary,
+      onChange,
+    }: Props,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
-      <label className={classes(styles.Field, primary && styles.Primary)}>
+      <label
+        className={classes(styles.Field, primary && styles.Primary)}
+        style={{ padding }}
+      >
         {left}
         <input
           ref={ref}
-          type="text"
+          max={max}
+          min={min}
+          type={type || "text"}
           placeholder={placeholder}
           className={styles.Input}
           name={name}

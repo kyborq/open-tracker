@@ -7,8 +7,11 @@ import {
   EmptyView,
   Field,
   PageHeader,
+  Popup,
   View,
 } from "../../components";
+import { useModal } from "../../hooks/useModal";
+import { convertEstimate } from "../../utils/estimate.utils";
 import { useGetList } from "./hooks/useGetList";
 
 export const ListPage = () => {
@@ -16,8 +19,17 @@ export const ListPage = () => {
   const { list, isLoading } = useGetList(id);
   const {
     register,
+    watch,
     formState: { isValid },
-  } = useForm<{ estimate: number; title: string }>();
+  } = useForm<{ estimate: number; title: string }>({
+    values: {
+      estimate: 0,
+      title: "",
+    },
+  });
+
+  const timePopup = useModal();
+  const estimate = watch("estimate");
 
   if (isLoading) {
     return (
@@ -42,8 +54,25 @@ export const ListPage = () => {
         placeholder="Enter Task"
         right={
           <View gap={4}>
-            <ActionButton label="00:00" icon={<TimeIcon />} />
+            <ActionButton
+              label={convertEstimate(estimate)}
+              icon={<TimeIcon />}
+              onClick={timePopup.open}
+            />
             <ActionButton icon={<SendIcon />} primary disabled={!isValid} />
+            <Popup state={timePopup} width={220} title="Estimate">
+              <Field
+                type="number"
+                padding={0}
+                placeholder="Hours"
+                min={0}
+                max={200}
+                {...register("estimate", {
+                  valueAsNumber: true,
+                  setValueAs: (v) => (v === "" ? 0 : parseInt(v)),
+                })}
+              />
+            </Popup>
           </View>
         }
         {...register("title", { required: true })}

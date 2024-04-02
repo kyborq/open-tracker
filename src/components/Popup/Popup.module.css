@@ -1,0 +1,22 @@
+.Popup {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 2px 24px rgba(0, 4, 41, 0.05);
+  transform-origin: bottom;
+}
+
+.Title {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
