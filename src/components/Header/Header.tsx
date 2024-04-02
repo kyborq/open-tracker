@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <header className={styles.Header}>
       <LogoIcon />
-      <Button label="Create list" />
+      <Button label="Sign Up" />
     </header>
   );
 };

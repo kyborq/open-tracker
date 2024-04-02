@@ -2,6 +2,8 @@ export type Task = {
   id: string;
   collectionId: string;
   collectionName: string;
+  startTime: Date;
+  endTime: Date;
   created: Date;
   updated: Date;
   title: string;

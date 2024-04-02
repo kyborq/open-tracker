@@ -13,6 +13,7 @@ import {
 } from "../../components";
 import { useModal } from "../../hooks/useModal";
 import { convertEstimate } from "../../utils/estimate.utils";
+import { TaskCard } from "./components";
 import { useCreateTask } from "./hooks/useCreateTask";
 import { useGetList } from "./hooks/useGetList";
 import { useGetTasks } from "./hooks/useGetTasks";
@@ -67,8 +68,9 @@ export const ListPage = () => {
 
       <View direction="column" gap={8}>
         {tasks.map((task) => (
-          <div key={task.id}>{task.title}</div>
+          <TaskCard key={task.id} task={task} />
         ))}
+        {!tasks.length && <EmptyView text="There is no tasks" />}
         {isTasksLoading && <OvalLoader />}
       </View>
 

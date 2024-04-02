@@ -8,6 +8,7 @@ type Props = {
   disabled?: boolean;
   isLoading?: boolean;
   primary?: boolean;
+  compact?: boolean;
   onClick?: () => void;
 };
 
@@ -15,6 +16,7 @@ export const ActionButton = ({
   label,
   disabled,
   isLoading,
+  compact,
   icon,
   primary,
   onClick,
@@ -24,6 +26,7 @@ export const ActionButton = ({
       className={classes(
         styles.ActionButton,
         primary && styles.Primary,
+        compact && styles.Compact,
         (disabled || isLoading) && styles.Disabled
       )}
       disabled={disabled}

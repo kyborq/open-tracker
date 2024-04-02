@@ -43,3 +43,8 @@
   cursor: default;
   transform: none;
 }
+
+.ActionButton.Compact {
+  width: 40px;
+  padding: 0;
+}
