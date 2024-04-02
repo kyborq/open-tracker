@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource-variable/montserrat": "^5.0.17",
+    "@fontsource/poppins": "^5.0.13",
     "axios": "^1.6.5",
     "axios-auth-refresh": "^3.3.6",
     "date-fns": "^3.3.1",

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Montserrat Variable", system-ui, -apple-system;
+  font-family: "Poppins", sans-serif;
   background-color: #f8f9fa;
   overflow: hidden;
 }
@@ -19,4 +19,9 @@ svg {
 #root {
   display: flex;
   height: 100vh;
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+  flex-direction: column;
+  gap: 48px;
 }
