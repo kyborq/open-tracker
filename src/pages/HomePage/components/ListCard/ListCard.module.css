@@ -1,0 +1,38 @@
+.ListCard {
+  width: 264px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 5px -2px rgba(33, 37, 41, 0.05);
+  border-radius: 18px;
+  font-size: 13px;
+  padding: 18px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 250ms;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.ListCard:hover {
+  box-shadow: 0 2px 12px -3px rgba(33, 37, 41, 0.1);
+  transition: 250ms;
+}
+
+.Link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Count {
+  color: #ced4da;
+}
